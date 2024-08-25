@@ -27,9 +27,9 @@ const Section = styled.section`
   position: relative;
   .background {
     img {
-      height: 90vh; /* Adjusted height for better responsiveness */
+      height: 80vh; /* Adjusted height for better responsiveness */
       width: 100%;
-            object-fit: cover; /* Ensures image covers the area */
+      object-fit: none; /* Ensures image covers the area */
 
     }
   }

@@ -35,7 +35,7 @@ export default function Footer() {
               <span>8920521797</span>
             </li>
             <li>
-              <span>kishansheth21@gmail.com</span>
+              <span>netkamenterprises@gmail.com</span>
             </li>
           </ul>
         </div>

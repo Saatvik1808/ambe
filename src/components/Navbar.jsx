@@ -49,12 +49,7 @@ export default function Navbar() {
         </ul>
       </div>
       <div className="account-info">
-        <div className="account">
-          <span>
-            <BsPerson />
-          </span>
-          <span>My Account</span>
-        </div>
+        
         <div className="search">
           <IoSearchOutline />
         </div>
