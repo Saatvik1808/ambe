@@ -1,19 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { BsPerson } from "react-icons/bs";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdClose } from "react-icons/md";
 import { IoSearchOutline } from "react-icons/io5";
 import Logo from "../assets/logo-no-background.svg";
+
 export default function Navbar() {
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const html = document.querySelector("html");
-  html.addEventListener("click", (e) => setIsNavOpen(false));
-  return (
-    <Container state={isNavOpen ? 1 : 0}>
-      <div className="brand">
-      <img src={Logo} alt="logo" />
 
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (e.target.closest('.navbar') === null) {
+        setIsNavOpen(false);
+      }
+    };
+    
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, []);
+
+  return (
+    <Container className="navbar" state={isNavOpen ? 1 : 0}>
+      <div className="brand">
+        <img src={Logo} alt="logo" />
       </div>
       <div className="toggle">
         {isNavOpen ? (
@@ -29,27 +39,14 @@ export default function Navbar() {
       </div>
       <div className={`links ${isNavOpen ? "show" : ""}`}>
         <ul>
-          <li>
-            <a href="#services">Home</a>
-          </li>
-          <li>
-            <a href="#destination"> Destination</a>
-          </li>
-          <li>
-            <a href="#offer">Job Opportunities</a>
-          </li>
-         
-        
-          <li>
-            <a href="#blog">Review</a>
-          </li>
-          <li>
-            <a href="#contact">Contact Us</a>
-          </li>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#destination">Destination</a></li>
+          <li><a href="#offer">Job Opportunities</a></li>
+          <li><a href="#blog">Review</a></li>
+          <li><a href="#contact">Contact Us</a></li>
         </ul>
       </div>
       <div className="account-info">
-        
         <div className="search">
           <IoSearchOutline />
         </div>
@@ -62,37 +59,37 @@ const Container = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  background-color: #fff;
+  padding: 1rem 2rem;
+  z-index: 10;
+
   .brand {
     img {
-      max-height: 40px; /* Adjust logo height for smaller screens */
+      max-height: 40px; /* Default max-height */
       width: auto; /* Maintain aspect ratio */
-      cursor: pointer;
+      transition: max-height 0.3s ease-in-out;
     }
   }
-  .name {
-  font-family: 'Arial', sans-serif; /* Use a clean and professional font */
-  font-size: 2rem; /* Adjust size as needed */
-  font-weight: bold; /* Make the text bold */
-  color: #007bff; /* Use a primary color that matches your branding */
-  text-align: center; /* Center the text */
-  margin: 0; /* Remove default margin */
-  padding: 1rem; /* Add padding for spacing */
-}
 
   .toggle {
     display: none;
   }
+
   .links {
     ul {
       display: flex;
       gap: 3rem;
       list-style-type: none;
+      margin: 0;
+      padding: 0;
+
       li {
         a {
           text-decoration: none;
           color: black;
           cursor: pointer;
-          transition: var(--default-transition);
+          transition: color 0.3s ease;
           &:hover {
             color: var(--primary-color);
           }
@@ -100,68 +97,66 @@ const Container = styled.nav`
       }
     }
   }
+
   .account-info {
     display: flex;
     gap: 2rem;
-    .account {
-      display: flex;
-      gap: 0.5rem;
-      cursor: pointer;
-    }
+
     .search {
       cursor: pointer;
     }
   }
 
-  @media screen and (min-width: 280px) and (max-width: 1080px) {
-    position: relative;
-    padding: 1rem 0.5rem;
-    z-index: 10;
-    .account-info {
-      display: none;
-    }
-    .brand {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-
-      img {
-        max-height: 40px; /* Adjust logo height for smaller screens */
-      }
-    }
+  @media screen and (max-width: 1080px) {
     .toggle {
-      padding-right: 1rem;
       display: block;
-      z-index: 1;
-    }
-    .show {
-      opacity: 1 !important;
-      visibility: visible !important;
+      cursor: pointer;
     }
 
     .links {
       position: absolute;
-      overflow-x: hidden;
       top: 0;
       right: 0;
       width: ${({ state }) => (state ? "60%" : "0%")};
       height: 100vh;
       background-color: var(--primary-color);
-      opacity: 0;
-      visibility: hidden;
+      opacity: ${({ state }) => (state ? "1" : "0")};
+      visibility: ${({ state }) => (state ? "visible" : "hidden")};
       transition: 0.4s ease-in-out;
+      overflow: hidden;
+
       ul {
         flex-direction: column;
         text-align: center;
         height: 100%;
         justify-content: center;
+        margin: 0;
+        padding: 0;
+
         li {
           a {
             color: white;
+            padding: 1rem;
+            display: block;
           }
         }
       }
+    }
+
+    .account-info {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .brand img {
+      max-height: 10px; /* Smaller max-height for smaller screens */
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .brand img {
+      max-height: 20px; /* Even smaller max-height for very small screens */
     }
   }
 `;

@@ -11,7 +11,7 @@ export default function Contact() {
         <div className="contact-info">
           <div className="phone">
             <FaPhone />
-            <span>8920521797</span>
+            <span>+91-8920521797</span>
           </div>
         </div>
       </div>
@@ -23,61 +23,81 @@ const Section = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 6rem 3rem; /* Increased padding */
+  padding: 6rem 3rem;
   background-color: #f4f4f4;
   .content {
     text-align: center;
     max-width: 600px;
     h1 {
       font-size: 2.5rem;
-      margin-bottom: 1.5rem; /* Increased margin-bottom */
+      margin-bottom: 1.5rem;
       color: var(--primary-color);
     }
     p {
-      font-size: 1.2rem; /* Increased font-size */
-      margin-bottom: 3rem; /* Increased margin-bottom */
+      font-size: 1.2rem;
+      margin-bottom: 3rem;
       color: var(--secondary-text);
     }
     .contact-info {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 1.5rem; /* Increased gap */
+      gap: 1.5rem;
       .phone {
         display: flex;
         align-items: center;
-        font-size: 1.7rem; /* Increased font-size */
+        font-size: 1.7rem;
         color: var(--primary-text);
         svg {
-          font-size: 2.5rem; /* Increased font-size */
+          font-size: 2.5rem;
           color: var(--primary-color);
         }
         span {
-          margin-left: 0.75rem; /* Increased margin-left */
+          margin-left: 0.75rem;
         }
       }
     }
   }
   @media screen and (max-width: 768px) {
-    padding: 4rem 2rem; /* Adjusted padding for smaller screens */
+    padding: 4rem 2rem;
     .content {
       h1 {
         font-size: 2rem;
       }
       p {
         font-size: 1.1rem;
-        margin-bottom: 2.5rem; /* Adjusted margin-bottom */
+        margin-bottom: 2.5rem;
       }
       .contact-info {
         flex-direction: column;
-        gap: 1rem; /* Adjusted gap */
+        gap: 1rem;
         .phone {
-          font-size: 1.4rem; /* Adjusted font-size */
+          font-size: 1.4rem;
           svg {
-            font-size: 2rem; /* Adjusted font-size */
+            font-size: 2rem;
           }
           span {
             margin-left: 0;
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 480px) {
+    padding: 3rem 1.5rem;
+    .content {
+      h1 {
+        font-size: 1.8rem;
+      }
+      p {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+      }
+      .contact-info {
+        .phone {
+          font-size: 1.2rem;
+          svg {
+            font-size: 1.5rem;
           }
         }
       }

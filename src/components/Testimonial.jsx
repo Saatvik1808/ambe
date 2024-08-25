@@ -85,7 +85,7 @@ const Section = styled.section`
       }
     }
   }
-  @media screen and (min-width: 280px) and (max-width: 1080px) {
+   @media screen and (max-width: 1080px) {
     margin-top: 3rem;
     .title {
       h1 {
@@ -96,10 +96,51 @@ const Section = styled.section`
     .testimonials {
       flex-direction: column;
       gap: 2rem;
+      .testimonial {
+        .title {
+          flex-direction: column;
+          align-items: flex-start;
+          .info {
+            margin-top: 0.5rem;
+          }
+        }
+        .description {
+          font-size: 0.9rem;
+        }
+      }
       .testimonial-image-one,
       .testimonial-image-two {
-        max-inline-size: 100%;
-        block-size: auto;
+        display: none; /* Hide images on smaller screens */
+      }
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .title {
+      h1 {
+        font-size: 1.2rem;
+      }
+    }
+    .testimonials {
+      .testimonial {
+        padding: 1rem;
+        .description {
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 480px) {
+    .title {
+      h1 {
+        font-size: 1rem;
+      }
+    }
+    .testimonials {
+      .testimonial {
+        padding: 0.5rem;
+        .description {
+          font-size: 0.7rem;
+        }
       }
     }
   }

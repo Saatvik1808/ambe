@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import logo from "../assets/logo-no-background.svg";
-import Button from "./Button";
 
 export default function Footer() {
   const quickLinks = [
@@ -32,7 +31,7 @@ export default function Footer() {
           </div>
           <ul>
             <li>
-              <span>8920521797</span>
+              <span>+91-8920521797</span>
             </li>
             <li>
               <span>netkamenterprises@gmail.com</span>
@@ -55,11 +54,10 @@ export default function Footer() {
             ))}
           </ul>
         </div>
-        
       </div>
       <div className="lower-footer">
         <span>
-          &copy; {new Date().getFullYear()}
+          &copy; {new Date().getFullYear()} All Rights Reserved.
         </span>
       </div>
     </Container>
@@ -70,38 +68,48 @@ const Container = styled.footer`
   background-color: #2c2c2c;
   color: #f4f4f4;
   padding: 4rem 2rem;
+  
   .upper-footer {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
     border-bottom: 2px solid var(--primary-color);
     padding-bottom: 2rem;
+    
     .col {
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
+      
       h2 {
         color: var(--primary-color);
         font-size: 1.5rem;
+        margin-bottom: 1rem;
       }
+      
       ul {
         list-style: none;
         padding: 0;
+        margin: 0;
         gap: 1rem;
+        
         li {
           cursor: pointer;
           transition: color 0.3s;
+          
           &:hover {
             color: var(--primary-color);
           }
         }
       }
+      
       .newsletter {
         display: flex;
         flex-direction: column;
         gap: 1rem;
+        
         input {
-          padding: 1rem;
+          padding: 0.75rem;
           border: none;
           font-size: 1rem;
           color: #333;
@@ -110,49 +118,59 @@ const Container = styled.footer`
         }
       }
     }
+    
     .brand {
       .logo {
         img {
-          width: 280px; /* Adjusted size */
-          height: auto; /* Maintain aspect ratio */
-          text-color:white;
+          width: 200px; /* Adjusted size for smaller screens */
+          height: auto;
         }
       }
     }
   }
+  
   .lower-footer {
     padding: 2rem 0;
     text-align: center;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+    
     a {
       text-decoration: none;
       color: var(--primary-color);
     }
   }
+  
   @media (max-width: 768px) {
+    padding: 2rem 1rem;
+    
     .upper-footer {
-      padding: 1rem;
       grid-template-columns: 1fr;
+      
+      .col {
+        gap: 1rem;
+        
+        h2 {
+          font-size: 1.25rem;
+        }
+        
+        ul {
+          gap: 0.5rem;
+          
+          li {
+            font-size: 0.9rem;
+          }
+        }
+        
+        .newsletter {
+          input {
+            font-size: 0.9rem;
+          }
+        }
+      }
     }
-    .col {
-      gap: 1rem;
-      h2 {
-        font-size: 1.25rem;
-      }
-      ul {
-        gap: 0.5rem;
-        li {
-          font-size: 0.9rem;
-        }
-      }
-      .newsletter {
-        input {
-          font-size: 0.9rem;
-        }
-        Button {
-          font-size: 0.9rem;
-        }
-      }
+    
+    .lower-footer {
+      font-size: 0.7rem;
     }
   }
 `;

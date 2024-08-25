@@ -118,7 +118,6 @@ const Section = styled.section`
     flex-direction: column;
     gap: 3rem;
     .destinations {
-      flex-direction: column;
       .destination {
         img {
           width: 100%;
@@ -130,10 +129,52 @@ const Section = styled.section`
     }
   }
   @media screen and (max-width: 768px) {
+    .info {
+      gap: 2rem;
+      h2 {
+        font-size: 2.5rem; /* Adjusted font size for smaller screens */
+      }
+      p {
+        font-size: 1rem; /* Adjusted font size for smaller screens */
+      }
+    }
     .destinations {
       .destination {
         img {
           height: 15rem; /* Adjusted height for smaller screens */
+        }
+        .name {
+          h3 {
+            font-size: 1.25rem; /* Adjusted font size for smaller screens */
+          }
+          p {
+            font-size: 0.875rem; /* Adjusted font size for smaller screens */
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 480px) {
+    .info {
+      h2 {
+        font-size: 2rem; /* Further reduced font size for very small screens */
+      }
+      p {
+        font-size: 0.875rem; /* Further reduced font size for very small screens */
+      }
+    }
+    .destinations {
+      .destination {
+        img {
+          height: 12rem; /* Further reduced height for very small screens */
+        }
+        .name {
+          h3 {
+            font-size: 1rem; /* Further reduced font size for very small screens */
+          }
+          p {
+            font-size: 0.75rem; /* Further reduced font size for very small screens */
+          }
         }
       }
     }
